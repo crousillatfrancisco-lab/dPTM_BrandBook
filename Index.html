@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>dPTM Nutrition — Brand Book</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Archivo+Expanded:wght@600;700;800;900&family=Anton&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    /* palette */
+    --orange:#E8501E;
+    --orange-soft:#F0764A;
+    --ember:#B83A12;
+    --bone:#F3EEE3;
+    --bone-2:#E8E0D1;
+    --bone-3:#DBD1BE;
+    --charcoal:#1A1714;
+    --ink:#23201B;
+    --gray:#8A8178;
+    --gray-2:#A79E92;
+    --line:rgba(35,32,27,.16);
+    --line-bone:rgba(243,238,227,.22);
+
+    /* type scale @1920 */
+    --type-hero:158px;
+    --type-display:108px;
+    --type-title:74px;
+    --type-subtitle:46px;
+    --type-lead:36px;
+    --type-body:28px;
+    --type-small:25px;
+    --type-mono:24px;
+
+    /* spacing */
+    --pad-x:112px;
+    --pad-y:90px;
+    --gap:40px;
+    --frame-inset:46px;
+  }
+
+  html,body{margin:0;background:#0e0c0a;}
+  deck-stage:not(:defined){visibility:hidden;}
+
+  deck-stage > section{
+    font-family:'Archivo',system-ui,sans-serif;
+    background:var(--bone);
+    color:var(--ink);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-start;
+    padding:var(--pad-y) var(--pad-x);
+    box-sizing:border-box;
+    overflow:hidden;
+    -webkit-font-smoothing:antialiased;
+    letter-spacing:-.005em;
+  }
+
+  /* background modifiers */
+  .s-char{background:var(--charcoal);color:var(--bone);}
+  .s-orange{background:var(--orange);color:var(--bone);}
+  .s-ink{background:#13110f;color:var(--bone);}
+
+  /* grain overlay */
+  .grain::before{
+    content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay;opacity:.4;
+  }
+  .s-char.grain::before,.s-ink.grain::before{mix-blend-mode:soft-light;opacity:.5;}
+
+  /* keyline frame motif */
+  .kf{position:absolute;inset:var(--frame-inset);border:2px solid currentColor;pointer-events:none;z-index:1;opacity:.85;}
+  .kf-l,.kf-r{position:absolute;z-index:2;font-family:'Space Mono',monospace;font-size:24px;letter-spacing:.14em;writing-mode:vertical-rl;top:50%;opacity:.9;text-transform:none;}
+  .kf-l{left:calc((var(--frame-inset) - 24px)/2 - 2px);transform:translateY(-50%) rotate(180deg);}
+  .kf-r{right:calc((var(--frame-inset) - 24px)/2 - 2px);transform:translateY(-50%);}
+
+  /* shared type */
+  .eyebrow{font-family:'Space Mono',monospace;font-size:var(--type-mono);letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center;gap:16px;position:relative;z-index:2;}
+  .eyebrow .num{color:var(--orange);font-weight:700;}
+  .s-orange .eyebrow .num{color:var(--charcoal);}
+  .eyebrow .ln{flex:1;height:2px;background:currentColor;opacity:.28;max-width:160px;}
+
+  h1,h2,h3,p{margin:0;}
+  .title{font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:var(--type-title);line-height:.96;letter-spacing:-.018em;position:relative;z-index:2;}
+  .display{font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:var(--type-display);line-height:.92;letter-spacing:-.02em;position:relative;z-index:2;}
+  .hero{font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:var(--type-hero);line-height:.88;letter-spacing:-.025em;position:relative;z-index:2;}
+  .lead{font-size:var(--type-lead);line-height:1.32;font-weight:500;position:relative;z-index:2;}
+  .body{font-size:var(--type-body);line-height:1.45;font-weight:400;position:relative;z-index:2;}
+  .small{font-size:var(--type-small);line-height:1.4;}
+  .mono{font-family:'Space Mono',monospace;}
+  .o{color:var(--orange);}
+  .muted{color:var(--gray);}
+  .s-char .muted,.s-ink .muted{color:var(--gray-2);}
+  .es{font-style:italic;}
+  b,strong{font-weight:800;}
+
+  .pageft{position:absolute;left:var(--pad-x);right:var(--pad-x);bottom:34px;display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:24px;letter-spacing:.12em;text-transform:uppercase;opacity:.5;z-index:2;}
+
+  .row{display:flex;}
+  .col{display:flex;flex-direction:column;}
+  .grow{flex:1;}
+
+  /* chips / pills */
+  .chip{display:inline-flex;align-items:center;gap:10px;font-family:'Space Mono',monospace;font-size:24px;letter-spacing:.06em;padding:10px 18px;border:1.5px solid currentColor;border-radius:100px;}
+
+  /* swatch */
+  .sw{border-radius:6px;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;box-sizing:border-box;}
+  .sw .nm{font-weight:800;font-size:26px;}
+  .sw .hx{font-family:'Space Mono',monospace;font-size:20px;opacity:.8;margin-top:4px;}
+
+  /* entrance — transform-only so content is never hidden in captures/print */
+  .anim,.anim2,.anim3{will-change:transform;}
+  @media (prefers-reduced-motion:no-preference){
+    [data-deck-active] .anim{animation:rise .55s cubic-bezier(.2,.7,.2,1) both;}
+    [data-deck-active] .anim2{animation:rise .55s cubic-bezier(.2,.7,.2,1) .07s both;}
+    [data-deck-active] .anim3{animation:rise .55s cubic-bezier(.2,.7,.2,1) .14s both;}
+    @keyframes rise{from{transform:translateY(22px);}to{transform:none;}}
+  }
+</style>
+</head>
+<body>
+<deck-stage width="1920" height="1080">
+
+  <!-- 1 · COVER -->
+  <section class="s-char grain" data-label="Cover">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM&nbsp;NUTRITION</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div class="eyebrow" style="position:absolute;top:78px;left:106px;"><span>Brand Book</span><span class="ln"></span><span>v1.0 · 2026</span></div>
+    <div class="col" style="margin:auto 0;gap:42px;align-items:flex-start;position:relative;z-index:2;">
+      <img class="anim" src="assets/logo-light.png" alt="dPTM" style="height:150px;width:auto;" />
+      <p class="anim2" style="font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:82px;line-height:1.0;letter-spacing:-.02em;max-width:1260px;">The performance brand that talks <span class="o">like one of us.</span></p>
+    </div>
+    <div style="position:absolute;left:106px;right:106px;bottom:62px;display:flex;justify-content:space-between;align-items:flex-end;z-index:2;">
+      <p class="small mono muted" style="max-width:560px;line-height:1.55;letter-spacing:.04em;">Strategy · Identity · System<br/>Master reference — investors · team · creative partners</p>
+      <p class="mono small" style="letter-spacing:.14em;">DE COLOMBIA PAL MUNDO →</p>
+    </div>
+  </section>
+
+  <!-- 2 · CONTENTS -->
+  <section class="s-bone" data-label="Contents">
+    <div class="eyebrow"><span>Contents</span><span class="ln"></span><span>12 Sections</span></div>
+    <h1 class="title" style="margin-top:30px;margin-bottom:64px;">What's inside.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1fr 1fr;column-gap:120px;row-gap:30px;align-content:start;position:relative;z-index:2;">
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">01</span><span class="body" style="font-weight:800;white-space:nowrap;">Executive Brand Summary</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">07</span><span class="body" style="font-weight:800;white-space:nowrap;">Packaging System</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">02</span><span class="body" style="font-weight:800;white-space:nowrap;">Strategic Positioning</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">08</span><span class="body" style="font-weight:800;white-space:nowrap;">Social Media System</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">03</span><span class="body" style="font-weight:800;white-space:nowrap;">Brand Personality</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">09</span><span class="body" style="font-weight:800;white-space:nowrap;">Website &amp; Digital</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">04</span><span class="body" style="font-weight:800;white-space:nowrap;">Visual Identity System</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">10</span><span class="body" style="font-weight:800;white-space:nowrap;">Future Growth</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">05</span><span class="body" style="font-weight:800;white-space:nowrap;">Photography Direction</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">11</span><span class="body" style="font-weight:800;white-space:nowrap;">Creative Concepts</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">06</span><span class="body" style="font-weight:800;white-space:nowrap;">Art Direction</span></div>
+      <div class="row" style="gap:26px;align-items:baseline;border-bottom:1.5px solid var(--line);padding-bottom:22px;"><span class="mono o" style="font-size:26px;width:48px;">12</span><span class="body" style="font-weight:800;white-space:nowrap;">Critical Assessment</span></div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>Contents</span></div>
+  </section>
+
+  <!-- 3 · PURPOSE OF THIS BOOK -->
+  <section class="s-bone" data-label="About this book">
+    <div class="row grow" style="gap:90px;position:relative;z-index:2;">
+      <div class="col" style="flex:1.1;justify-content:center;">
+        <div class="eyebrow anim"><span>About this book</span></div>
+        <h1 class="title anim" style="margin:28px 0 36px;">One source<br/>of truth.</h1>
+        <p class="lead anim2" style="max-width:760px;">This book documents and refines the dPTM brand — it doesn't reinvent it. The instinct is right; this codifies it so it scales with the same edge from a single Instagram post to a Lima retail launch.</p>
+      </div>
+      <div class="col" style="flex:.9;justify-content:center;gap:30px;border-left:2px solid var(--line);padding-left:60px;">
+        <div class="col" style="gap:8px;"><span class="mono o" style="font-size:24px;">USE IT TO</span><p class="body">Keep the voice, color and craft consistent across every market and maker.</p></div>
+        <div class="col" style="gap:8px;"><span class="mono o" style="font-size:24px;">THE PRINCIPLE</span><p class="body">Refine, don't dilute. Premium base, orange as a weapon, irreverence with intent.</p></div>
+        <div class="col" style="gap:8px;"><span class="mono o" style="font-size:24px;">LANGUAGE</span><p class="body">Documented in English; the brand's Spanish voice is preserved verbatim.</p></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>About</span></div>
+  </section>
+
+  <!-- 4 · DIVIDER 01 -->
+  <section class="s-orange grain" data-label="01 Executive Brand Summary">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">01</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 01</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:64%;">Executive Brand Summary</h1>
+      <p class="lead" style="max-width:860px;">Who we are, why we exist, and the promise everything else answers to.</p>
+    </div>
+  </section>
+
+  <!-- 5 · BRAND ESSENCE / THE NAME -->
+  <section class="s-bone" data-label="Brand Essence">
+    <div class="row grow" style="gap:88px;position:relative;z-index:2;align-items:stretch;">
+      <div class="col" style="flex:1.05;justify-content:center;">
+        <div class="eyebrow"><span>01.1 Brand Essence</span></div>
+        <p style="font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:96px;line-height:.94;letter-spacing:-.025em;margin:30px 0 32px;">Irreverent<br/>performance<span class="o">.</span></p>
+        <p class="lead" style="max-width:640px;">World-class formulas, delivered with the wit and warmth of a brand that's actually one of you. Premium that never forgets where it's from.</p>
+      </div>
+      <div class="col" style="flex:.95;justify-content:center;background:var(--charcoal);color:var(--bone);border-radius:10px;padding:64px;box-sizing:border-box;">
+        <div class="eyebrow"><span>The name</span></div>
+        <div style="display:grid;grid-template-columns:46px 1fr;column-gap:26px;row-gap:22px;align-items:center;margin:34px 0;">
+          <span class="o mono" style="font-size:30px;font-weight:700;">d</span><span class="body" style="white-space:nowrap;"><b>driven by</b></span>
+          <span class="o mono" style="font-size:30px;font-weight:700;">P</span><span class="body" style="white-space:nowrap;"><b>Performance</b></span>
+          <span class="o mono" style="font-size:30px;font-weight:700;">T</span><span class="body" style="white-space:nowrap;"><b>Training</b></span>
+          <span class="o mono" style="font-size:30px;font-weight:700;">M</span><span class="body" style="white-space:nowrap;"><b>Motivation</b></span>
+        </div>
+        <p class="small" style="line-height:1.5;opacity:.92;">Said out loud, dPTM is <span class="es o">"¡de PTM!"</span> — Colombian slang for something insanely, swear-out-loud good. The name is the promise <span class="es">and</span> the punchline at once.</p>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>01 · Executive Summary</span></div>
+  </section>
+
+  <!-- 6 · PURPOSE / VISION / MISSION -->
+  <section class="s-bone" data-label="Purpose / Vision / Mission">
+    <div class="eyebrow"><span>01.2 Purpose · Vision · Mission</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:28px 0 56px;">The reason we get up.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;position:relative;z-index:2;">
+      <div class="col" style="padding-right:54px;gap:18px;">
+        <span class="mono o" style="font-size:24px;letter-spacing:.14em;">PURPOSE — WHY</span>
+        <p style="font-size:30px;line-height:1.34;font-weight:600;">Strip the clinical mask off performance nutrition — give Latin America a brand that performs like the world's best and talks like one of us.</p>
+      </div>
+      <div class="col" style="padding:0 54px;gap:18px;border-left:2px solid var(--line);">
+        <span class="mono o" style="font-size:24px;letter-spacing:.14em;">VISION — WHERE</span>
+        <p style="font-size:30px;line-height:1.34;font-weight:600;">The first Colombian performance brand the world imitates — not the other way around.</p>
+      </div>
+      <div class="col" style="padding-left:54px;gap:18px;border-left:2px solid var(--line);">
+        <span class="mono o" style="font-size:24px;letter-spacing:.14em;">MISSION — WHAT</span>
+        <p style="font-size:30px;line-height:1.34;font-weight:600;">Engineer cleaner, genuinely better-tasting formulas — starting with Clear Protein — and wrap them in a brand people are proud to be seen with.</p>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>01 · Executive Summary</span></div>
+  </section>
+
+  <!-- 7 · CORE VALUES -->
+  <section class="s-bone" data-label="Core Values">
+    <div class="eyebrow"><span>01.3 Core Values</span><span class="ln"></span><span>Five non-negotiables</span></div>
+    <h1 class="title" style="margin:28px 0 50px;">What we won't bend on.</h1>
+    <div class="grow col" style="justify-content:center;gap:0;position:relative;z-index:2;">
+      <div class="row" style="gap:34px;align-items:baseline;padding:24px 0;border-top:1.5px solid var(--line);"><span class="mono o" style="font-size:26px;width:54px;">01</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:38px;flex:0 0 480px;">La calidad no se negocia</span><span class="body muted">Quality is non-negotiable. What's on the label is in the bag.</span></div>
+      <div class="row" style="gap:34px;align-items:baseline;padding:24px 0;border-top:1.5px solid var(--line);"><span class="mono o" style="font-size:26px;width:54px;">02</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:38px;flex:0 0 480px;">Rompe lo que conoces</span><span class="body muted">Challenge the category's defaults — milky, clinical, boring.</span></div>
+      <div class="row" style="gap:34px;align-items:baseline;padding:24px 0;border-top:1.5px solid var(--line);"><span class="mono o" style="font-size:26px;width:54px;">03</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:38px;flex:0 0 480px;">De Colombia pal mundo</span><span class="body muted">Proudly local, globally ambitious. The origin is the edge.</span></div>
+      <div class="row" style="gap:34px;align-items:baseline;padding:24px 0;border-top:1.5px solid var(--line);"><span class="mono o" style="font-size:26px;width:54px;">04</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:38px;flex:0 0 480px;">Cercanía</span><span class="body muted">Talk like a friend, never a lab. Closeness is premium.</span></div>
+      <div class="row" style="gap:34px;align-items:baseline;padding:24px 0;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line);"><span class="mono o" style="font-size:26px;width:54px;">05</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:38px;flex:0 0 480px;">Performance real</span><span class="body muted">Substance over hype. Every claim is on the label.</span></div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>01 · Executive Summary</span></div>
+  </section>
+
+  <!-- 8 · BRAND PROMISE -->
+  <section class="s-char grain" data-label="Brand Promise">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div class="col grow" style="justify-content:center;position:relative;z-index:2;align-items:flex-start;max-width:1560px;">
+      <div class="eyebrow" style="margin-bottom:32px;"><span>01.4 Brand Promise</span></div>
+      <div style="font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:92px;line-height:1.05;letter-spacing:-.02em;margin:0 0 48px;">
+        <div>La calidad no se</div>
+        <div class="o">negocia.</div>
+      </div>
+      <p class="lead muted" style="max-width:1020px;margin:0;">What's on the label is in the bag. It works, and it tastes like nothing else on the shelf. If it doesn't move you, it doesn't ship.</p>
+    </div>
+  </section>
+
+  <!-- 9 · DIVIDER 02 -->
+  <section class="s-orange grain" data-label="02 Strategic Positioning">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">02</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 02</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:64%;">Strategic Positioning</h1>
+      <p class="lead" style="max-width:860px;">Who we're for, where we win, and the space no one else owns.</p>
+    </div>
+  </section>
+
+  <!-- 10 · TARGET AUDIENCE -->
+  <section class="s-bone" data-label="Target Audience">
+    <div class="eyebrow"><span>02.1 Target Audience</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:26px 0 46px;">Two people, one standard.</h1>
+    <div class="row grow" style="gap:0;position:relative;z-index:2;">
+      <div class="col" style="flex:1;padding-right:56px;gap:20px;">
+        <div class="row" style="gap:16px;align-items:center;"><span class="chip" style="border-color:var(--orange);color:var(--orange);">PRIMARY</span><span class="mono" style="font-size:24px;">24–40 · urban</span></div>
+        <p style="font-family:'Archivo Expanded';font-weight:800;font-size:40px;line-height:1.02;">The Ambitious<br/>Modern Athlete</p>
+        <p class="body muted" style="max-width:600px;">Trains 4–6× a week and tracks everything. Bogotá, Medellín, Cali — soon Lima. Fluent in global wellness culture (WHOOP, AG1), with the income and taste to back it. Wants premium, allergic to pretension.</p>
+      </div>
+      <div class="col" style="flex:1;padding:0 56px;gap:20px;border-left:2px solid var(--line);">
+        <div class="row" style="gap:16px;align-items:center;"><span class="chip">SECONDARY</span><span class="mono" style="font-size:24px;">30–45 · functional</span></div>
+        <p style="font-family:'Archivo Expanded';font-weight:800;font-size:40px;line-height:1.02;">The Functional<br/>Professional</p>
+        <p class="body muted" style="max-width:600px;">Busy, health-led, not a bodybuilder. Uses protein for energy and recovery — and won't drink a chalky, milky shake. Reads the label. Pays for clean and clear.</p>
+      </div>
+    </div>
+    <div class="row" style="gap:18px;align-items:center;position:relative;z-index:2;margin-top:8px;padding-top:26px;border-top:1.5px solid var(--line);">
+      <span class="mono o" style="font-size:24px;letter-spacing:.14em;">NOT FOR →</span>
+      <span class="body muted">Hardcore bodybuilders chasing the cheapest gram of protein. That's not the fight we're in.</span>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>02 · Positioning</span></div>
+  </section>
+
+  <!-- 11 · PERSONAS -->
+  <section class="s-bone" data-label="Customer Personas">
+    <div class="eyebrow"><span>02.2 Customer Personas</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:26px 0 42px;">Three faces of the buyer.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;position:relative;z-index:2;">
+      <div class="col" style="background:var(--bone-2);border-radius:10px;overflow:hidden;">
+        <div style="height:230px;background:repeating-linear-gradient(135deg,var(--bone-3) 0 14px,var(--bone-2) 14px 28px);display:flex;align-items:flex-end;padding:18px;"><span class="mono muted" style="font-size:22px;">[ portrait ]</span></div>
+        <div class="col" style="padding:30px 32px;gap:14px;">
+          <div class="col" style="gap:2px;"><span style="font-family:'Archivo Expanded';font-weight:800;font-size:32px;">Mateo, 29</span><span class="mono muted" style="font-size:24px;">Medellín · Ops lead, CrossFit 5×/wk</span></div>
+          <p class="small" style="line-height:1.45;">"Milky shakes wreck my stomach. dPTM Clear is the first protein I actually look forward to."</p>
+          <p class="small muted" style="line-height:1.4;">Pays premium for taste + transparency. Tracks recovery on his watch.</p>
+        </div>
+      </div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;overflow:hidden;">
+        <div style="height:230px;background:repeating-linear-gradient(135deg,var(--bone-3) 0 14px,var(--bone-2) 14px 28px);display:flex;align-items:flex-end;padding:18px;"><span class="mono muted" style="font-size:22px;">[ portrait ]</span></div>
+        <div class="col" style="padding:30px 32px;gap:14px;">
+          <div class="col" style="gap:2px;"><span style="font-family:'Archivo Expanded';font-weight:800;font-size:32px;">Valentina, 34</span><span class="mono muted" style="font-size:24px;">Bogotá · Marketing director, runner</span></div>
+          <p class="small" style="line-height:1.45;">"I want protein that feels like a refreshing drink, not a meal. And a brand I'm not embarrassed to post."</p>
+          <p class="small muted" style="line-height:1.4;">Fasts in the morning, follows wellness IG. Brand affinity matters.</p>
+        </div>
+      </div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;overflow:hidden;">
+        <div style="height:230px;background:repeating-linear-gradient(135deg,var(--bone-3) 0 14px,var(--bone-2) 14px 28px);display:flex;align-items:flex-end;padding:18px;"><span class="mono muted" style="font-size:22px;">[ portrait ]</span></div>
+        <div class="col" style="padding:30px 32px;gap:14px;">
+          <div class="col" style="gap:2px;"><span style="font-family:'Archivo Expanded';font-weight:800;font-size:32px;">Lucía, 31</span><span class="mono muted" style="font-size:24px;">Lima · Physiotherapist</span></div>
+          <p class="small" style="line-height:1.45;">"My clients trust what I recommend. A clean label and clear format make that an easy call."</p>
+          <p class="small muted" style="line-height:1.4;">The Peru beachhead — recommends to a network, not just herself.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>02 · Positioning</span></div>
+  </section>
+
+  <!-- 12 · POSITIONING MAP -->
+  <section class="s-bone" data-label="Market Positioning">
+    <div class="row" style="justify-content:space-between;align-items:flex-end;position:relative;z-index:2;">
+      <div class="col" style="gap:26px;">
+        <div class="eyebrow"><span>02.3 Market Positioning</span></div>
+        <h1 class="title">The open quadrant.</h1>
+      </div>
+      <p class="body muted" style="max-width:520px;text-align:right;">Everyone premium is clinical. Everyone human is cheap. dPTM takes the corner no one's standing in: <b style="color:var(--ink);">premium &amp; human.</b></p>
+    </div>
+    <div class="grow" style="position:relative;z-index:2;margin-top:30px;">
+      <div style="position:absolute;inset:34px 40px;border:1.5px solid var(--line);">
+        <!-- axes -->
+        <div style="position:absolute;left:50%;top:0;bottom:0;width:1.5px;background:var(--line);"></div>
+        <div style="position:absolute;top:50%;left:0;right:0;height:1.5px;background:var(--line);"></div>
+        <!-- axis labels -->
+        <span class="mono muted" style="position:absolute;top:-30px;left:50%;transform:translateX(-50%);font-size:22px;letter-spacing:.12em;">PREMIUM</span>
+        <span class="mono muted" style="position:absolute;bottom:-30px;left:50%;transform:translateX(-50%);font-size:22px;letter-spacing:.12em;">COMMODITY</span>
+        <span class="mono muted" style="position:absolute;left:-118px;top:50%;transform:translateY(-50%);font-size:22px;letter-spacing:.12em;">CLINICAL</span>
+        <span class="mono muted" style="position:absolute;right:-96px;top:50%;transform:translateY(-50%);font-size:22px;letter-spacing:.12em;">HUMAN</span>
+        <!-- competitor dots -->
+        <div style="position:absolute;left:24%;top:18%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--gray);"></span><span class="mono" style="font-size:21px;">Momentous</span></div>
+        <div style="position:absolute;left:35%;top:30%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--gray);"></span><span class="mono" style="font-size:21px;">Transparent Labs</span></div>
+        <div style="position:absolute;left:20%;top:38%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--gray);"></span><span class="mono" style="font-size:21px;">AG1</span></div>
+        <div style="position:absolute;left:30%;top:12%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--gray);"></span><span class="mono" style="font-size:21px;">WHOOP · Apple</span></div>
+        <div style="position:absolute;left:74%;top:78%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--gray);"></span><span class="mono" style="font-size:21px;">Local whey brands</span></div>
+        <div style="position:absolute;left:30%;top:80%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:10px;"><span style="width:14px;height:14px;border-radius:50%;background:var(--gray);"></span><span class="mono" style="font-size:21px;">Generic supplements</span></div>
+        <!-- dPTM -->
+        <div style="position:absolute;left:76%;top:24%;transform:translate(-50%,-50%);display:flex;align-items:center;gap:12px;"><span style="width:26px;height:26px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 8px rgba(232,80,30,.18);"></span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:30px;color:var(--orange);">dPTM</span></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>02 · Positioning</span></div>
+  </section>
+
+  <!-- 13 · COMPETITIVE LANDSCAPE -->
+  <section class="s-bone" data-label="Competitive Landscape">
+    <div class="eyebrow"><span>02.4 Competitive Landscape</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:26px 0 40px;">Who owns what.</h1>
+    <div class="grow col" style="position:relative;z-index:2;gap:0;">
+      <div class="row" style="padding:0 0 16px;border-bottom:2px solid var(--ink);"><span class="mono muted" style="flex:0 0 360px;font-size:23px;letter-spacing:.1em;">BRAND</span><span class="mono muted" style="flex:1;font-size:23px;letter-spacing:.1em;">OWNS</span><span class="mono muted" style="flex:1;font-size:23px;letter-spacing:.1em;">DOESN'T</span></div>
+      <div class="row" style="padding:22px 0;border-bottom:1.5px solid var(--line);align-items:baseline;"><span style="flex:0 0 360px;font-family:'Archivo Expanded';font-weight:800;font-size:30px;">Momentous</span><span class="body" style="flex:1;">Science &amp; elite-athlete trust</span><span class="body muted" style="flex:1;">Warmth · accessibility · fun</span></div>
+      <div class="row" style="padding:22px 0;border-bottom:1.5px solid var(--line);align-items:baseline;"><span style="flex:0 0 360px;font-family:'Archivo Expanded';font-weight:800;font-size:30px;">Transparent Labs</span><span class="body" style="flex:1;">Radical formula transparency</span><span class="body muted" style="flex:1;">Personality · design charm</span></div>
+      <div class="row" style="padding:22px 0;border-bottom:1.5px solid var(--line);align-items:baseline;"><span style="flex:0 0 360px;font-family:'Archivo Expanded';font-weight:800;font-size:30px;">AG1</span><span class="body" style="flex:1;">Premium ritual &amp; habit</span><span class="body muted" style="flex:1;">Taste joy · cultural closeness</span></div>
+      <div class="row" style="padding:22px 0;border-bottom:1.5px solid var(--line);align-items:baseline;"><span style="flex:0 0 360px;font-family:'Archivo Expanded';font-weight:800;font-size:30px;">Local whey brands</span><span class="body" style="flex:1;">Price &amp; availability</span><span class="body muted" style="flex:1;">Quality proof · premium feel</span></div>
+      <div class="row" style="padding:22px 0;border-bottom:2px solid var(--orange);align-items:baseline;background:rgba(232,80,30,.06);"><span style="flex:0 0 360px;font-family:'Archivo Expanded';font-weight:900;font-size:30px;color:var(--orange);padding-left:10px;">dPTM</span><span class="body" style="flex:1;font-weight:700;">Premium + human + clear format</span><span class="body" style="flex:1;font-weight:700;">— the combination is the moat</span></div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>02 · Positioning</span></div>
+  </section>
+
+  <!-- 14 · WHITE SPACE & DIFFERENTIATION -->
+  <section class="s-char grain" data-label="White Space & Differentiation">
+    <div class="eyebrow" style="position:relative;z-index:2;"><span>02.5 White Space &amp; Differentiation</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:26px 0 12px;position:relative;z-index:2;">Four reasons we win.</h1>
+    <p class="lead muted" style="max-width:1040px;margin-bottom:44px;position:relative;z-index:2;">Premium performance nutrition with real cultural closeness — built for Latin America. And a product format the region barely knows yet.</p>
+    <div class="grow" style="display:grid;grid-template-columns:1fr 1fr;gap:30px 64px;position:relative;z-index:2;align-content:center;">
+      <div class="col" style="gap:12px;border-top:2px solid var(--orange);padding-top:22px;"><span class="mono o" style="font-size:24px;">01 · FORMAT</span><p style="font-size:30px;font-weight:700;line-height:1.28;">Clear, refreshing, 0g sugar — not another thick, milky shake.</p></div>
+      <div class="col" style="gap:12px;border-top:2px solid var(--orange);padding-top:22px;"><span class="mono o" style="font-size:24px;">02 · VOICE</span><p style="font-size:30px;font-weight:700;line-height:1.28;">Irreverent, bilingual, unmistakably Colombian.</p></div>
+      <div class="col" style="gap:12px;border-top:2px solid var(--orange);padding-top:22px;"><span class="mono o" style="font-size:24px;">03 · TRANSPARENCY</span><p style="font-size:30px;font-weight:700;line-height:1.28;">What's claimed is on the label. No proprietary-blend hiding.</p></div>
+      <div class="col" style="gap:12px;border-top:2px solid var(--orange);padding-top:22px;"><span class="mono o" style="font-size:24px;">04 · DESIGN</span><p style="font-size:30px;font-weight:700;line-height:1.28;">Premium craft without the clinical coldness.</p></div>
+    </div>
+  </section>
+
+  <!-- 15 · DIVIDER 03 -->
+  <section class="s-orange grain" data-label="03 Brand Personality">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">03</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 03</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:64%;">Brand Personality</h1>
+      <p class="lead" style="max-width:860px;">If dPTM walked into the gym, here's exactly how it would act.</p>
+    </div>
+  </section>
+
+  <!-- 16 · ARCHETYPE -->
+  <section class="s-bone" data-label="Archetype">
+    <div class="eyebrow"><span>03.1 Archetype</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:26px 0 44px;">A rebel with a record.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:34px;position:relative;z-index:2;">
+      <div class="col" style="background:var(--charcoal);color:var(--bone);border-radius:10px;padding:46px;justify-content:space-between;">
+        <div class="col" style="gap:16px;"><span class="mono o" style="font-size:24px;letter-spacing:.14em;">PRIMARY</span><p style="font-family:'Archivo Expanded';font-weight:900;font-size:52px;line-height:1.0;">The Rebel</p></div>
+        <p class="body" style="opacity:.9;">Breaks what you know. The whole brand is built to challenge a clinical, milky, self-serious category. <span class="o">Rompe lo que conoces.</span></p>
+        <span class="mono muted" style="font-size:22px;">Shows up as → the voice &amp; manifesto</span>
+      </div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:46px;justify-content:space-between;">
+        <div class="col" style="gap:16px;"><span class="mono o" style="font-size:24px;letter-spacing:.14em;">SUPPORT</span><p style="font-family:'Archivo Expanded';font-weight:900;font-size:52px;line-height:1.0;">The Hero</p></div>
+        <p class="body">The reason to believe. Performance, discipline, results — <span style="font-weight:700;">driven by</span> P·T·M.</p>
+        <span class="mono muted" style="font-size:22px;">Shows up as → the proof</span>
+      </div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:46px;justify-content:space-between;">
+        <div class="col" style="gap:16px;"><span class="mono o" style="font-size:24px;letter-spacing:.14em;">ACCENT</span><p style="font-family:'Archivo Expanded';font-weight:900;font-size:52px;line-height:1.0;">The Jester</p></div>
+        <p class="body">Keeps it warm. The card deck, the wink, <span class="es">"nada es lo que parece."</span> Closeness through humor.</p>
+        <span class="mono muted" style="font-size:22px;">Shows up as → the play</span>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>03 · Personality</span></div>
+  </section>
+
+  <!-- 17 · TRAITS & EMOTIONAL TERRITORY -->
+  <section class="s-bone" data-label="Personality Traits">
+    <div class="row grow" style="gap:0;position:relative;z-index:2;">
+      <div class="col" style="flex:1.05;justify-content:center;padding-right:64px;">
+        <div class="eyebrow" style="margin-bottom:30px;"><span>03.2 Personality Traits</span></div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;max-width:720px;">
+          <span class="chip" style="font-size:26px;border-width:2px;">Bold</span>
+          <span class="chip" style="font-size:26px;border-width:2px;">Irreverent</span>
+          <span class="chip" style="font-size:26px;border-width:2px;">Confident</span>
+          <span class="chip" style="font-size:26px;border-width:2px;border-color:var(--orange);color:var(--orange);">Cercano</span>
+          <span class="chip" style="font-size:26px;border-width:2px;">Disciplined</span>
+          <span class="chip" style="font-size:26px;border-width:2px;">Witty</span>
+          <span class="chip" style="font-size:26px;border-width:2px;">Proudly Colombian</span>
+        </div>
+      </div>
+      <div class="col" style="flex:.95;justify-content:center;background:var(--charcoal);color:var(--bone);border-radius:10px;padding:64px;">
+        <span class="mono o" style="font-size:24px;letter-spacing:.14em;margin-bottom:24px;">EMOTIONAL TERRITORY</span>
+        <p style="font-size:38px;line-height:1.3;font-weight:600;">The rush of doing something audacious — and pulling it off — with the in-joke warmth of a brand that talks like your gym friend, never your doctor.</p>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>03 · Personality</span></div>
+  </section>
+
+  <!-- 18 · BRAND KEYWORDS -->
+  <section class="s-ink grain" data-label="Brand Keywords">
+    <div class="eyebrow" style="position:relative;z-index:2;"><span>03.3 Brand Keywords</span><span class="ln"></span></div>
+    <div class="col grow" style="justify-content:center;position:relative;z-index:2;">
+      <div style="font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:92px;line-height:1.04;letter-spacing:-.02em;">
+        <div>Bold. Clear. <span class="o">Irreverent.</span></div>
+        <div>Premium. Cercano.</div>
+        <div>Disciplined. Colombian.</div>
+      </div>
+      <p class="lead muted" style="margin-top:42px;max-width:980px;">Desired perception, in one line: <span style="color:var(--bone);font-weight:700;">"the premium one that actually gets us."</span></p>
+    </div>
+  </section>
+
+  <!-- 19 · DO'S & DON'TS -->
+  <section class="s-bone" data-label="Do's & Don'ts">
+    <div class="eyebrow"><span>03.4 Do's &amp; Don'ts</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:26px 0 40px;">Stay on the right side of bold.</h1>
+    <div class="row grow" style="gap:56px;position:relative;z-index:2;">
+      <div class="col" style="flex:1;gap:20px;">
+        <span class="mono o" style="font-size:26px;letter-spacing:.14em;">DO</span>
+        <div class="col" style="gap:16px;">
+          <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Lead with one bold idea per frame.</p>
+          <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Use Spanish slang with full confidence.</p>
+          <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Let orange punctuate — never flood.</p>
+          <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Put the proof on the label, loud.</p>
+          <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Treat humor as craft, not filler.</p>
+        </div>
+      </div>
+      <div class="col" style="flex:1;gap:20px;padding-left:56px;border-left:2px solid var(--line);">
+        <span class="mono muted" style="font-size:26px;letter-spacing:.14em;">DON'T</span>
+        <div class="col" style="gap:16px;">
+          <p class="body muted"><span style="font-weight:800;">–</span>&nbsp; Default to veiny bodybuilding clichés.</p>
+          <p class="body muted"><span style="font-weight:800;">–</span>&nbsp; Reach for neon or busy gradients.</p>
+          <p class="body muted"><span style="font-weight:800;">–</span>&nbsp; Cram the layout — whitespace is premium.</p>
+          <p class="body muted"><span style="font-weight:800;">–</span>&nbsp; Over-explain the joke.</p>
+          <p class="body muted"><span style="font-weight:800;">–</span>&nbsp; Be crude for shock without a payoff.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>03 · Personality</span></div>
+  </section>
+
+  <!-- 20 · DIVIDER 04 -->
+  <section class="s-orange grain" data-label="04 Visual Identity System">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">04</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 04</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:70%;">Visual Identity System</h1>
+      <p class="lead" style="max-width:860px;">The logo, color, type and graphic language — and the rules that keep them sharp.</p>
+    </div>
+  </section>
+
+  <!-- 21 · LOGO PHILOSOPHY -->
+  <section class="s-bone" data-label="Logo Philosophy">
+    <div class="row grow" style="gap:80px;position:relative;z-index:2;align-items:center;">
+      <div class="col" style="flex:1;align-items:center;justify-content:center;background:var(--charcoal);border-radius:12px;padding:80px;">
+        <img src="assets/logo-light.png" alt="dPTM" style="width:74%;max-width:520px;" />
+      </div>
+      <div class="col" style="flex:1;justify-content:center;">
+        <div class="eyebrow" style="margin-bottom:26px;"><span>04.1 Logo Philosophy</span></div>
+        <h1 class="title" style="font-size:60px;margin-bottom:34px;">Lowercase warmth,<br/>uppercase resolve.</h1>
+        <div class="col" style="gap:22px;">
+          <div class="row" style="gap:22px;"><span class="mono o" style="font-size:24px;width:46px;">d</span><p class="body" style="flex:1;">The lowercase <b>d</b> is the human note — close, approachable. <span class="mono muted" style="font-size:21px;">cercanía</span></p></div>
+          <div class="row" style="gap:22px;"><span class="mono o" style="font-size:24px;width:46px;">PTM</span><p class="body" style="flex:1;">The uppercase <b>PTM</b> is the resolve — Performance, Training, Motivation.</p></div>
+          <div class="row" style="gap:22px;"><span class="mono o" style="font-size:24px;width:46px;">—</span><p class="body" style="flex:1;">The underline is momentum — the "driven by" line, and a ground to push off.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 22 · LOGO VARIATIONS -->
+  <section class="s-bone" data-label="Logo Variations">
+    <div class="eyebrow"><span>04.2 Logo Architecture &amp; Variations</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:24px 0 38px;">One mark, four jobs.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1.4fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:24px;position:relative;z-index:2;">
+      <div class="col" style="grid-row:span 2;background:var(--bone-2);border-radius:10px;padding:50px;justify-content:center;align-items:center;gap:22px;">
+        <img src="assets/logo-dark.png" alt="dPTM" style="width:62%;max-width:360px;" />
+        <div class="row" style="align-items:center;gap:16px;width:62%;max-width:360px;"><span style="flex:1;height:2px;background:var(--ink);"></span><span class="mono" style="font-size:22px;letter-spacing:.5em;padding-left:.5em;">NUTRITION</span><span style="flex:1;height:2px;background:var(--ink);"></span></div>
+        <span class="mono muted" style="font-size:21px;margin-top:14px;">PRIMARY LOCKUP — default</span>
+      </div>
+      <div class="col" style="background:var(--charcoal);border-radius:10px;padding:36px;justify-content:center;align-items:center;position:relative;"><img src="assets/logo-light.png" style="width:74%;" /><span class="mono" style="color:var(--gray-2);font-size:20px;position:absolute;bottom:18px;">REVERSED</span></div>
+      <div class="col" style="background:var(--orange);border-radius:10px;padding:36px;justify-content:center;align-items:center;position:relative;"><img src="assets/logo-dark.png" style="width:74%;" /><span class="mono" style="color:rgba(26,23,20,.6);font-size:20px;position:absolute;bottom:18px;">ON ORANGE</span></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:36px;justify-content:center;align-items:center;position:relative;"><span style="font-family:'Archivo Expanded';font-weight:900;font-size:84px;letter-spacing:-.03em;">dP</span><span class="mono muted" style="font-size:20px;position:absolute;bottom:18px;">MONOGRAM — avatars · favicons</span></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:36px;justify-content:center;align-items:center;position:relative;"><img src="assets/logo-dark.png" style="width:70%;" /><span class="mono muted" style="font-size:20px;position:absolute;bottom:18px;">WORDMARK ONLY</span></div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 23 · CLEAR SPACE & MIN SIZE -->
+  <section class="s-bone" data-label="Clear Space & Minimum Size">
+    <div class="eyebrow"><span>04.3 Clear Space &amp; Minimum Size</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:24px 0 36px;">Give it room to breathe.</h1>
+    <div class="row grow" style="gap:56px;position:relative;z-index:2;align-items:stretch;">
+      <div class="col" style="flex:1.5;background:var(--bone-2);border-radius:10px;padding:50px;justify-content:center;align-items:center;position:relative;">
+        <div style="position:relative;padding:74px;outline:2px dashed var(--gray-2);">
+          <div style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-family:'Space Mono';font-size:42px;color:var(--orange);">x</div>
+          <div style="position:absolute;top:10px;left:50%;transform:translateX(-50%);font-family:'Space Mono';font-size:42px;color:var(--orange);">x</div>
+          <img src="assets/logo-dark.png" style="width:360px;display:block;" />
+        </div>
+        <span class="mono muted" style="font-size:22px;margin-top:26px;">Clear space = <span class="o">x</span>, the height of the “d”. Keep it clear on all sides.</span>
+      </div>
+      <div class="col" style="flex:1;gap:30px;justify-content:center;">
+        <div class="col" style="gap:14px;border-top:2px solid var(--orange);padding-top:22px;">
+          <span class="mono o" style="font-size:24px;">MINIMUM — DIGITAL</span>
+          <div class="row" style="align-items:baseline;gap:16px;"><span style="font-family:'Archivo Expanded';font-weight:900;font-size:56px;">120 px</span><span class="body muted">wide (primary lockup)</span></div>
+        </div>
+        <div class="col" style="gap:14px;border-top:2px solid var(--orange);padding-top:22px;">
+          <span class="mono o" style="font-size:24px;">MINIMUM — PRINT</span>
+          <div class="row" style="align-items:baseline;gap:16px;"><span style="font-family:'Archivo Expanded';font-weight:900;font-size:56px;">24 mm</span><span class="body muted">wide (primary lockup)</span></div>
+        </div>
+        <div class="col" style="gap:14px;border-top:2px solid var(--orange);padding-top:22px;">
+          <span class="mono o" style="font-size:24px;">BELOW MINIMUM</span>
+          <p class="body">Drop “NUTRITION” and use the wordmark or <b>dP</b> monogram instead.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 24 · LOGO MISUSE -->
+  <section class="s-bone" data-label="Logo Misuse">
+    <div class="eyebrow"><span>04.4 Logo Misuse</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:24px 0 34px;">Six ways to kill it.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:22px;position:relative;z-index:2;">
+      <div class="col" style="background:var(--bone-2);border-radius:10px;align-items:center;justify-content:center;position:relative;overflow:hidden;"><img src="assets/logo-dark.png" style="width:60%;transform:scaleX(1.55);" /><span class="mono" style="position:absolute;bottom:16px;left:18px;font-size:20px;color:var(--ember);">✕ Don't stretch</span></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;align-items:center;justify-content:center;position:relative;overflow:hidden;"><img src="assets/logo-dark.png" style="width:60%;filter:hue-rotate(150deg) saturate(2);" /><span class="mono" style="position:absolute;bottom:16px;left:18px;font-size:20px;color:var(--ember);">✕ Don't recolor</span></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;align-items:center;justify-content:center;position:relative;overflow:hidden;"><img src="assets/logo-dark.png" style="width:54%;transform:rotate(-12deg);" /><span class="mono" style="position:absolute;bottom:16px;left:18px;font-size:20px;color:var(--ember);">✕ Don't rotate</span></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;align-items:center;justify-content:center;position:relative;overflow:hidden;"><img src="assets/logo-dark.png" style="width:60%;filter:drop-shadow(8px 10px 6px rgba(0,0,0,.5));" /><span class="mono" style="position:absolute;bottom:16px;left:18px;font-size:20px;color:var(--ember);">✕ Don't add effects</span></div>
+      <div class="col grain s-orange" style="border-radius:10px;align-items:center;justify-content:center;position:relative;overflow:hidden;"><img src="assets/logo-light.png" style="width:60%;position:relative;z-index:2;opacity:.5;" /><span class="mono" style="position:absolute;bottom:16px;left:18px;font-size:20px;color:var(--bone);z-index:2;">✕ Don't bury on texture</span></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;align-items:center;justify-content:center;position:relative;overflow:hidden;"><span style="font-family:'Archivo Expanded';font-weight:900;font-size:64px;-webkit-text-stroke:2px var(--ink);color:transparent;">dPTM</span><span class="mono" style="position:absolute;bottom:16px;left:18px;font-size:20px;color:var(--ember);">✕ Don't outline</span></div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 25 · COLOR — SIGNATURE + BASE -->
+  <section class="s-bone" data-label="Color System">
+    <div class="eyebrow"><span>04.5 Color System</span><span class="ln"></span><span>Orange is a guest, not the host</span></div>
+    <h1 class="title" style="margin:24px 0 36px;">Premium base. Orange accent.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1.1fr 1fr 1fr;gap:24px;position:relative;z-index:2;">
+      <div class="sw" style="background:var(--orange);color:var(--bone);"><span class="mono" style="font-size:21px;opacity:.85;margin-bottom:auto;">SIGNATURE · ACCENT ONLY</span><span class="nm">dPTM Orange</span><span class="hx">#E8501E · rgb(232,80,30)</span></div>
+      <div class="sw" style="background:var(--bone);color:var(--ink);border:1.5px solid var(--line);"><span class="mono" style="font-size:21px;opacity:.6;margin-bottom:auto;">BASE · LIGHT</span><span class="nm">Bone</span><span class="hx">#F3EEE3 · rgb(243,238,227)</span></div>
+      <div class="sw" style="background:var(--charcoal);color:var(--bone);"><span class="mono" style="font-size:21px;opacity:.7;margin-bottom:auto;">BASE · DARK</span><span class="nm">Charcoal</span><span class="hx">#1A1714 · rgb(26,23,20)</span></div>
+    </div>
+    <p class="body muted" style="margin-top:30px;position:relative;z-index:2;max-width:1280px;">The shift that makes dPTM feel premium: orange stops being the background and becomes the highlight. Most surfaces are <b style="color:var(--ink);">bone or charcoal</b>; orange marks the moments that matter.</p>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 26 · COLOR — FULL PALETTE + FUNCTIONAL -->
+  <section class="s-bone" data-label="Full Palette">
+    <div class="eyebrow"><span>04.5 Color System — Extended</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:24px 0 34px;">The full set.</h1>
+    <div style="position:relative;z-index:2;margin-bottom:30px;"><span class="mono muted" style="font-size:23px;letter-spacing:.12em;">SUPPORT &amp; NEUTRALS</span></div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:20px;position:relative;z-index:2;">
+      <div class="sw" style="background:var(--ember);color:var(--bone);height:150px;"><span class="nm" style="font-size:23px;">Ember</span><span class="hx">#B83A12</span></div>
+      <div class="sw" style="background:var(--bone-2);color:var(--ink);height:150px;border:1.5px solid var(--line);"><span class="nm" style="font-size:23px;">Bone 2</span><span class="hx">#E8E0D1</span></div>
+      <div class="sw" style="background:var(--bone-3);color:var(--ink);height:150px;"><span class="nm" style="font-size:23px;">Bone 3</span><span class="hx">#DBD1BE</span></div>
+      <div class="sw" style="background:var(--gray);color:var(--bone);height:150px;"><span class="nm" style="font-size:23px;">Warm Gray</span><span class="hx">#8A8178</span></div>
+      <div class="sw" style="background:var(--ink);color:var(--bone);height:150px;"><span class="nm" style="font-size:23px;">Ink</span><span class="hx">#23201B</span></div>
+    </div>
+    <div style="position:relative;z-index:2;margin:34px 0 18px;"><span class="mono muted" style="font-size:23px;letter-spacing:.12em;">FUNCTIONAL — UI ONLY, LOW SATURATION</span></div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative;z-index:2;">
+      <div class="sw" style="background:#3F7A5A;color:var(--bone);height:118px;"><span class="nm" style="font-size:23px;">Success</span><span class="hx">#3F7A5A</span></div>
+      <div class="sw" style="background:#3A6B86;color:var(--bone);height:118px;"><span class="nm" style="font-size:23px;">Info</span><span class="hx">#3A6B86</span></div>
+      <div class="sw" style="background:#C2772A;color:var(--bone);height:118px;"><span class="nm" style="font-size:23px;">Warning</span><span class="hx">#C2772A</span></div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 27 · TYPOGRAPHY — TYPEFACES -->
+  <section class="s-bone" data-label="Typography">
+    <div class="eyebrow"><span>04.6 Typography</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:24px 0 36px;">Two voices, one system.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1.3fr 1fr;gap:26px;position:relative;z-index:2;">
+      <div class="col" style="background:var(--charcoal);color:var(--bone);border-radius:10px;padding:48px;justify-content:space-between;">
+        <span style="font-family:'Archivo Expanded';font-weight:900;font-size:150px;line-height:.9;">Aa</span>
+        <div class="col" style="gap:8px;"><span style="font-family:'Archivo Expanded';font-weight:800;font-size:34px;">Archivo / Archivo Expanded</span><span class="body" style="opacity:.85;">Display &amp; text. Geometric grotesque — echoes the logo. Black &amp; ExtraBold for headlines, Regular–SemiBold for body.</span></div>
+      </div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:48px;justify-content:space-between;">
+        <span style="font-family:'Space Mono';font-weight:700;font-size:150px;line-height:.9;">Aa</span>
+        <div class="col" style="gap:8px;"><span style="font-family:'Space Mono';font-weight:700;font-size:30px;">Space Mono</span><span class="body muted">Technical layer. Eyebrows, specs, captions, the rotated frame labels. Adds the lab-grade precision.</span></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 28 · TYPOGRAPHY — HIERARCHY -->
+  <section class="s-bone" data-label="Type Hierarchy">
+    <div class="eyebrow"><span>04.6 Typography — Hierarchy</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:24px 0 34px;">The scale.</h1>
+    <div class="grow col" style="position:relative;z-index:2;gap:0;justify-content:center;">
+      <div class="row" style="align-items:baseline;gap:34px;padding:18px 0;border-bottom:1.5px solid var(--line);"><span class="mono muted" style="flex:0 0 290px;font-size:22px;">DISPLAY · Expanded 900</span><span style="font-family:'Archivo Expanded';font-weight:900;font-size:64px;">Rompe lo que conoces</span></div>
+      <div class="row" style="align-items:baseline;gap:34px;padding:18px 0;border-bottom:1.5px solid var(--line);"><span class="mono muted" style="flex:0 0 290px;font-size:22px;">TITLE · Expanded 900</span><span style="font-family:'Archivo Expanded';font-weight:900;font-size:46px;">Clear Performance</span></div>
+      <div class="row" style="align-items:baseline;gap:34px;padding:18px 0;border-bottom:1.5px solid var(--line);"><span class="mono muted" style="flex:0 0 290px;font-size:22px;">SUBHEAD · Archivo 700</span><span style="font-family:'Archivo';font-weight:700;font-size:36px;">20g protein · 0g sugar</span></div>
+      <div class="row" style="align-items:baseline;gap:34px;padding:18px 0;border-bottom:1.5px solid var(--line);"><span class="mono muted" style="flex:0 0 290px;font-size:22px;">BODY · Archivo 400</span><span style="font-family:'Archivo';font-weight:400;font-size:28px;">Refreshing clear whey isolate that drinks like juice, not a milkshake.</span></div>
+      <div class="row" style="align-items:baseline;gap:34px;padding:18px 0;border-bottom:1.5px solid var(--line);"><span class="mono muted" style="flex:0 0 290px;font-size:22px;">LABEL · Space Mono</span><span style="font-family:'Space Mono';font-size:24px;letter-spacing:.12em;">#ROMPELOQUECONOCES</span></div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 29 · GRAPHIC ELEMENTS -->
+  <section class="s-bone" data-label="Graphic Elements">
+    <div class="eyebrow"><span>04.7 Graphic Elements</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:24px 0 34px;">The signature kit.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;position:relative;z-index:2;">
+      <div class="col" style="background:var(--orange);border-radius:10px;padding:34px;position:relative;overflow:hidden;color:var(--bone);">
+        <div style="position:absolute;inset:24px;border:2px solid var(--bone);"></div>
+        <span class="mono" style="position:absolute;left:14px;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;font-size:18px;">dPTM</span>
+        <span class="mono" style="position:absolute;right:14px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-size:18px;">#RompeLoQueConoces</span>
+        <div class="col" style="margin:auto;position:relative;z-index:2;align-items:center;"><span style="font-family:'Archivo Expanded';font-weight:900;font-size:40px;">The Frame</span></div>
+        <span class="mono" style="position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:19px;">KEYLINE + ROTATED LABELS</span>
+      </div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:34px;justify-content:space-between;align-items:flex-start;">
+        <div class="col" style="gap:2px;"><span class="mono muted" style="font-size:22px;">driven by</span><span style="font-family:'Archivo Expanded';font-weight:900;font-size:40px;line-height:1.0;">Performance<br/>Training<br/>Motivation</span></div>
+        <span class="mono muted" style="font-size:19px;">THE "DRIVEN BY" LOCKUP</span>
+      </div>
+      <div class="col" style="background:var(--charcoal);border-radius:10px;padding:0;justify-content:flex-end;align-items:flex-start;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;font-family:'Archivo Expanded';font-weight:900;font-size:46px;line-height:1.1;color:rgba(243,238,227,.08);word-spacing:6px;padding:20px;">dPTM dPTM dPTM dPTM dPTM dPTM dPTM dPTM dPTM dPTM dPTM dPTM dPTM dPTM dPTM dPTM</div>
+        <span class="mono" style="color:var(--gray-2);font-size:19px;padding:34px;position:relative;z-index:2;">REPEAT-WORDMARK PATTERN</span>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 30 · TEXTURE & ICONOGRAPHY -->
+  <section class="s-bone" data-label="Texture & Iconography">
+    <div class="eyebrow"><span>04.8 Texture, Pattern &amp; Icons</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:24px 0 34px;">The human touches.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1fr 1fr;gap:24px;position:relative;z-index:2;">
+      <div class="col" style="gap:24px;">
+        <div class="row grain s-orange" style="flex:1;border-radius:10px;padding:34px;align-items:flex-end;position:relative;overflow:hidden;"><span class="mono" style="color:var(--bone);font-size:20px;position:relative;z-index:2;">RISOGRAPH GRAIN — keeps premium from going sterile</span></div>
+        <div class="row" style="flex:1;background:var(--bone-2);border-radius:10px;padding:34px;align-items:center;gap:28px;">
+          <div style="display:flex;gap:22px;align-items:center;">
+            <span style="width:64px;height:64px;border:2.5px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Archivo Expanded';font-weight:900;font-size:24px;">20g</span>
+            <span style="width:64px;height:64px;border:2.5px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Archivo Expanded';font-weight:900;font-size:24px;">0g</span>
+            <span style="width:64px;height:64px;border:2.5px solid var(--ink);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono';font-size:30px;">≈</span>
+          </div>
+          <span class="mono muted" style="font-size:20px;flex:1;">THIN-LINE PROOF ICONS — protein · sugar · clear, one weight, one radius</span>
+        </div>
+      </div>
+      <div class="col" style="background:var(--charcoal);border-radius:10px;padding:44px;justify-content:space-between;color:var(--bone);">
+        <p class="body" style="opacity:.9;">The <b>playing-card illustration system</b> — Q, K, Joker — is a collectible, ownable asset. Vintage line-art, bone stock, orange + black. Reserve it for hero campaigns and drops.</p>
+        <div class="row" style="gap:16px;">
+          <span class="chip" style="border-color:var(--bone);color:var(--bone);font-size:22px;">Q ♥</span>
+          <span class="chip" style="border-color:var(--bone);color:var(--bone);font-size:22px;">K ♠</span>
+          <span class="chip" style="border-color:var(--orange);color:var(--orange);font-size:22px;">Joker</span>
+        </div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>04 · Visual Identity</span></div>
+  </section>
+
+  <!-- 31 · DIVIDER 05 -->
+  <section class="s-orange grain" data-label="05 Photography Direction">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">05</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 05</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:70%;">Photography Direction</h1>
+      <p class="lead" style="max-width:860px;">Warm, hungry, confident — never cold, clinical or stocky.</p>
+    </div>
+  </section>
+
+  <!-- 32 · PHOTOGRAPHY MOOD (full bleed) -->
+  <section class="s-char" data-label="Photography Mood" style="padding:0;flex-direction:row;">
+    <div style="flex:1.12;overflow:hidden;"><img src="assets/ddd.jpg" alt="dPTM Clear product" style="width:100%;height:100%;object-fit:cover;" /></div>
+    <div class="col" style="flex:1;justify-content:center;padding:96px;">
+      <div class="eyebrow" style="margin-bottom:26px;"><span>05.1 Mood &amp; Principles</span></div>
+      <h1 class="title" style="font-size:58px;margin-bottom:32px;">Appetite, warmth,<br/>and real texture.</h1>
+      <div class="col" style="gap:20px;">
+        <p class="body"><span class="o" style="font-weight:800;">01</span>&nbsp; Warm, directional key light — depth and sheen, never flat.</p>
+        <p class="body"><span class="o" style="font-weight:800;">02</span>&nbsp; Real texture: juice, fruit pulp, condensation, skin.</p>
+        <p class="body"><span class="o" style="font-weight:800;">03</span>&nbsp; Tight, sensory crops — get close enough to taste it.</p>
+        <p class="body"><span class="o" style="font-weight:800;">04</span>&nbsp; Seamless orange or charcoal backdrops.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 33 · PRODUCT PHOTOGRAPHY -->
+  <section class="s-bone" data-label="Product Photography">
+    <div class="eyebrow"><span>05.2 Product Photography</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:22px 0 32px;">The pack is the hero.</h1>
+    <div class="row grow" style="gap:34px;position:relative;z-index:2;">
+      <div style="flex:1.1;border-radius:10px;overflow:hidden;background:#000;"><img src="assets/ddd.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div class="col" style="flex:1;justify-content:center;gap:30px;">
+        <div class="col" style="gap:14px;">
+          <span class="mono o" style="font-size:24px;letter-spacing:.14em;">DO</span>
+          <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Single key light, soft fill, glossy seamless floor.</p>
+          <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Stage the real fruit — mango, maracuyá — as proof of flavor.</p>
+          <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Show the clear liquid; that's the whole point.</p>
+        </div>
+        <div class="col" style="gap:14px;border-top:1.5px solid var(--line);padding-top:24px;">
+          <span class="mono muted" style="font-size:24px;letter-spacing:.14em;">DON'T</span>
+          <p class="body muted"><span style="font-weight:800;">–</span>&nbsp; Cluttered props or busy, multi-color backdrops.</p>
+          <p class="body muted"><span style="font-weight:800;">–</span>&nbsp; Flat, shadowless catalog lighting.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>05 · Photography</span></div>
+  </section>
+
+  <!-- 34 · LIFESTYLE PHOTOGRAPHY -->
+  <section class="s-bone" data-label="Lifestyle Photography">
+    <div class="eyebrow"><span>05.3 Lifestyle Photography</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:22px 0 30px;">Bodies, not bodybuilding.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1fr 1fr 1.05fr;gap:24px;position:relative;z-index:2;">
+      <div style="border-radius:10px;overflow:hidden;"><img src="assets/img-53.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div style="border-radius:10px;overflow:hidden;"><img src="assets/img-52.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div class="col" style="justify-content:center;gap:26px;padding-left:14px;">
+        <div class="col" style="gap:12px;"><span class="mono o" style="font-size:24px;letter-spacing:.14em;">DO</span><p class="body">Sensory and human — skin, fruit, a single body in warm light. Confident, a little provocative.</p></div>
+        <div class="col" style="gap:12px;border-top:1.5px solid var(--line);padding-top:22px;"><span class="mono muted" style="font-size:24px;letter-spacing:.14em;">DON'T</span><p class="body muted">Default to veiny flexing, gym mirrors and grimacing reps. Use that energy rarely, and on purpose.</p></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>05 · Photography</span></div>
+  </section>
+
+  <!-- 35 · DIVIDER 06 -->
+  <section class="s-orange grain" data-label="06 Art Direction">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">06</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 06</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:64%;">Art Direction</h1>
+      <p class="lead" style="max-width:860px;">The world all of this lives in — and the feeling it leaves behind.</p>
+    </div>
+  </section>
+
+  <!-- 36 · ART DIRECTION — THE WORLD -->
+  <section class="s-bone" data-label="The Visual World">
+    <div class="eyebrow"><span>06.1 The Visual World</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:22px 0 14px;">A premium street lab.</h1>
+    <p class="lead muted" style="max-width:1180px;margin-bottom:30px;position:relative;z-index:2;">Four worlds collide: propaganda-poster illustration, editorial typography, warm studio photography, and irreverent bilingual copy. Confident, a little dangerous, always in on the joke.</p>
+    <div class="grow" style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:20px;position:relative;z-index:2;">
+      <div style="border-radius:10px;overflow:hidden;"><img src="assets/img-58.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div style="border-radius:10px;overflow:hidden;"><img src="assets/img-57.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div style="border-radius:10px;overflow:hidden;"><img src="assets/img-54.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div class="col" style="background:var(--charcoal);color:var(--bone);border-radius:10px;padding:30px;justify-content:center;gap:16px;">
+        <span class="mono o" style="font-size:22px;letter-spacing:.12em;">PRINCIPLES</span>
+        <p class="small" style="line-height:1.5;">One idea per frame, big. Orange punctuates. Grain keeps it human. The wit is the strategy.</p>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>06 · Art Direction</span></div>
+  </section>
+
+  <!-- 37 · DIVIDER 07 -->
+  <section class="s-orange grain" data-label="07 Packaging System">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">07</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 07</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:64%;">Packaging System</h1>
+      <p class="lead" style="max-width:860px;">The current CLEAR pouch works. Here's the structure that keeps every future SKU on-brand.</p>
+    </div>
+  </section>
+
+  <!-- 38 · LABEL STRUCTURE -->
+  <section class="s-bone" data-label="Label Structure">
+    <div class="eyebrow"><span>07.1 Label Structure &amp; Hierarchy</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:22px 0 30px;">Read it in one second.</h1>
+    <div class="row grow" style="gap:46px;position:relative;z-index:2;">
+      <div style="flex:.85;border-radius:10px;overflow:hidden;background:#000;"><img src="assets/product-front.png" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div class="col" style="flex:1.15;justify-content:center;gap:0;">
+        <div class="row" style="gap:24px;align-items:baseline;padding:15px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="font-size:24px;width:42px;">01</span><span class="body" style="flex:0 0 250px;font-weight:700;">Brand lockup</span><span class="body muted">dPTM + NUTRITION, top-left anchor</span></div>
+        <div class="row" style="gap:24px;align-items:baseline;padding:15px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="font-size:24px;width:42px;">02</span><span class="body" style="flex:0 0 250px;font-weight:700;">Format</span><span class="body muted">“CLEAR” — biggest word on the pack</span></div>
+        <div class="row" style="gap:24px;align-items:baseline;padding:15px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="font-size:24px;width:42px;">03</span><span class="body" style="flex:0 0 250px;font-weight:700;">Descriptor</span><span class="body muted">“Protein Powder” — small caps under format</span></div>
+        <div class="row" style="gap:24px;align-items:baseline;padding:15px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="font-size:24px;width:42px;">04</span><span class="body" style="flex:0 0 250px;font-weight:700;">Flavor</span><span class="body" style="color:var(--orange);font-weight:700;">MaracuMango — in the flavor accent</span></div>
+        <div class="row" style="gap:24px;align-items:baseline;padding:15px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="font-size:24px;width:42px;">05</span><span class="body" style="flex:0 0 250px;font-weight:700;">Proof row</span><span class="body muted">20g · 0g · stevia · clear — locked icon row</span></div>
+        <div class="row" style="gap:24px;align-items:baseline;padding:15px 0;"><span class="mono o" style="font-size:24px;width:42px;">06</span><span class="body" style="flex:0 0 250px;font-weight:700;">Fruit cue</span><span class="body muted">Illustrated fruit ties color to flavor</span></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>07 · Packaging</span></div>
+  </section>
+
+  <!-- 39 · SKU EXPANSION -->
+  <section class="s-bone" data-label="SKU Expansion">
+    <div class="eyebrow"><span>07.2 SKU Expansion</span><span class="ln"></span><span>Format is the constant</span></div>
+    <h1 class="title" style="margin:22px 0 30px;">Scales without losing the shelf.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:repeat(4,1fr);gap:26px;position:relative;z-index:2;align-items:stretch;">
+      <div class="col" style="background:var(--bone-2);border-radius:14px 14px 10px 10px;overflow:hidden;">
+        <div style="height:20px;background:var(--orange);"></div>
+        <div class="col" style="padding:30px 26px;gap:6px;flex:1;justify-content:flex-end;"><span class="mono muted" style="font-size:19px;">dPTM · CLEAR</span><span style="font-family:'Archivo Expanded';font-weight:900;font-size:46px;line-height:.9;">CLEAR</span><span class="body" style="color:var(--orange);font-weight:700;">MaracuMango</span><span class="mono muted" style="font-size:19px;margin-top:8px;">live today</span></div>
+      </div>
+      <div class="col" style="background:var(--bone-2);border-radius:14px 14px 10px 10px;overflow:hidden;">
+        <div style="height:20px;background:#5C8A3A;"></div>
+        <div class="col" style="padding:30px 26px;gap:6px;flex:1;justify-content:flex-end;"><span class="mono muted" style="font-size:19px;">dPTM · CLEAR</span><span style="font-family:'Archivo Expanded';font-weight:900;font-size:46px;line-height:.9;">CLEAR</span><span class="body" style="color:#5C8A3A;font-weight:700;">Lulo-Limón</span><span class="mono muted" style="font-size:19px;margin-top:8px;">flavor extension</span></div>
+      </div>
+      <div class="col" style="background:var(--charcoal);border-radius:14px 14px 10px 10px;overflow:hidden;color:var(--bone);">
+        <div style="height:20px;background:var(--orange);"></div>
+        <div class="col" style="padding:30px 26px;gap:6px;flex:1;justify-content:flex-end;"><span class="mono" style="font-size:19px;opacity:.6;">dPTM · ISO</span><span style="font-family:'Archivo Expanded';font-weight:900;font-size:46px;line-height:.9;">ISO</span><span class="body" style="color:var(--orange);font-weight:700;">Vainilla</span><span class="mono" style="font-size:19px;margin-top:8px;opacity:.6;">format extension</span></div>
+      </div>
+      <div class="col" style="background:var(--bone-2);border-radius:14px 14px 10px 10px;overflow:hidden;">
+        <div style="height:20px;background:#B23A48;"></div>
+        <div class="col" style="padding:30px 26px;gap:6px;flex:1;justify-content:flex-end;"><span class="mono muted" style="font-size:19px;">dPTM · PRE</span><span style="font-family:'Archivo Expanded';font-weight:900;font-size:46px;line-height:.9;">PRE</span><span class="body" style="color:#B23A48;font-weight:700;">Cereza</span><span class="mono muted" style="font-size:19px;margin-top:8px;">new line</span></div>
+      </div>
+    </div>
+    <div class="row" style="gap:40px;margin-top:28px;position:relative;z-index:2;">
+      <p class="body" style="flex:1;"><span class="mono o" style="font-size:22px;">RULE →</span> &nbsp;Format word stays the hero. Flavor changes the <b>accent color + fruit</b>, nothing else.</p>
+      <p class="body" style="flex:1;"><span class="mono o" style="font-size:22px;">FIX →</span> &nbsp;Re-typeset all label copy properly — the current pack carries placeholder/garbled text.</p>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>07 · Packaging</span></div>
+  </section>
+
+  <!-- 40 · DIVIDER 08 -->
+  <section class="s-orange grain" data-label="08 Social Media System">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">08</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 08</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:70%;">Social Media System</h1>
+      <p class="lead" style="max-width:860px;">Where the brand lives loudest — built to scale without a designer in the loop.</p>
+    </div>
+  </section>
+
+  <!-- 41 · CONTENT PILLARS -->
+  <section class="s-bone" data-label="Content Pillars">
+    <div class="eyebrow"><span>08.1 Content Pillars</span><span class="ln"></span><span>Five repeatable lanes</span></div>
+    <h1 class="title" style="margin:22px 0 36px;">What we post, always.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:repeat(5,1fr);gap:22px;position:relative;z-index:2;">
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:30px 26px;gap:16px;justify-content:flex-start;"><span class="mono o" style="font-size:24px;">01</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:27px;line-height:1.05;">Manifesto</span><p class="small muted" style="line-height:1.45;">“driven by…” statements &amp; #RompeLoQueConoces.</p></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:30px 26px;gap:16px;justify-content:flex-start;"><span class="mono o" style="font-size:24px;">02</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:27px;line-height:1.05;">Product &amp; Proof</span><p class="small muted" style="line-height:1.45;">Clear in motion, 20g / 0g, the taste.</p></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:30px 26px;gap:16px;justify-content:flex-start;"><span class="mono o" style="font-size:24px;">03</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:27px;line-height:1.05;">Origin Saga</span><p class="small muted" style="line-height:1.45;">The illustrated story, told in chapters.</p></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:30px 26px;gap:16px;justify-content:flex-start;"><span class="mono o" style="font-size:24px;">04</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:27px;line-height:1.05;">Education</span><p class="small muted" style="line-height:1.45;">Clear protein 101 · why transparency wins.</p></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:30px 26px;gap:16px;justify-content:flex-start;"><span class="mono o" style="font-size:24px;">05</span><span style="font-family:'Archivo Expanded';font-weight:800;font-size:27px;line-height:1.05;">Community</span><p class="small muted" style="line-height:1.45;">Colombian athletes, run clubs, real UGC.</p></div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>08 · Social</span></div>
+  </section>
+
+  <!-- 42 · FEED & FORMATS -->
+  <section class="s-bone" data-label="Feed & Formats">
+    <div class="eyebrow"><span>08.2 Feed Structure &amp; Formats</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:22px 0 30px;">A feed with rhythm.</h1>
+    <div class="row grow" style="gap:46px;position:relative;z-index:2;">
+      <div style="flex:0 0 480px;display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-content:start;">
+        <div style="aspect-ratio:1;overflow:hidden;border-radius:3px;"><img src="assets/img-51.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div style="aspect-ratio:1;overflow:hidden;border-radius:3px;"><img src="assets/ddd.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div style="aspect-ratio:1;overflow:hidden;border-radius:3px;"><img src="assets/img-58.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div style="aspect-ratio:1;overflow:hidden;border-radius:3px;"><img src="assets/img-43.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div style="aspect-ratio:1;overflow:hidden;border-radius:3px;"><img src="assets/img-53.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div style="aspect-ratio:1;overflow:hidden;border-radius:3px;"><img src="assets/img-48.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div style="aspect-ratio:1;overflow:hidden;border-radius:3px;"><img src="assets/img-40.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div style="aspect-ratio:1;overflow:hidden;border-radius:3px;"><img src="assets/img-52.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+        <div style="aspect-ratio:1;overflow:hidden;border-radius:3px;"><img src="assets/img-44.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      </div>
+      <div class="col" style="flex:1;justify-content:center;gap:26px;">
+        <p class="body"><b>The rhythm:</b> never two of the same tile-type side by side. Rotate statement → product → illustration so the grid always reads composed.</p>
+        <div class="col" style="gap:14px;border-top:1.5px solid var(--line);padding-top:24px;">
+          <span class="mono o" style="font-size:23px;letter-spacing:.12em;">FIVE POST FORMATS</span>
+          <p class="body">Keyline statement · Illustrated poster · Product still · Playing-card series · Typographic attention-grab.</p>
+        </div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>08 · Social</span></div>
+  </section>
+
+  <!-- 43 · STORIES & REELS -->
+  <section class="s-bone" data-label="Stories & Reels">
+    <div class="eyebrow"><span>08.3 Stories, Reels &amp; Thumbnails</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:22px 0 30px;">Vertical, fast, unmistakable.</h1>
+    <div class="row grow" style="gap:40px;position:relative;z-index:2;align-items:stretch;">
+      <div style="flex:0 0 250px;border-radius:12px;overflow:hidden;position:relative;"><img src="assets/img-54.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div style="flex:0 0 250px;border-radius:12px;overflow:hidden;position:relative;"><img src="assets/img-48.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div class="col" style="flex:1;justify-content:center;gap:26px;">
+        <div class="col" style="gap:12px;"><span class="mono o" style="font-size:23px;letter-spacing:.12em;">STORIES</span><p class="body">Vertical keyline frame · polls &amp; Q&amp;A · “behind the formula”. Always rotated dPTM tab top-left.</p></div>
+        <div class="col" style="gap:12px;border-top:1.5px solid var(--line);padding-top:22px;"><span class="mono o" style="font-size:23px;letter-spacing:.12em;">REELS</span><p class="body">Witty, fast cuts. The hero demo: <b>clear vs milky</b> taste test. Hook in the first second.</p></div>
+        <div class="col" style="gap:12px;border-top:1.5px solid var(--line);padding-top:22px;"><span class="mono o" style="font-size:23px;letter-spacing:.12em;">THUMBNAILS</span><p class="body">One system: rotated dPTM + a bold two-word title. Consistency makes the channel recognizable at a glance.</p></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>08 · Social</span></div>
+  </section>
+
+  <!-- 44 · DIVIDER 09 -->
+  <section class="s-orange grain" data-label="09 Website & Digital">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">09</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 09</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:64%;">Website &amp; Digital</h1>
+      <p class="lead" style="max-width:860px;">A store that earns the premium price and closes the sale.</p>
+    </div>
+  </section>
+
+  <!-- 45 · UX & LANDING -->
+  <section class="s-bone" data-label="UX & Landing Structure">
+    <div class="eyebrow"><span>09.1 UX Principles &amp; Landing Structure</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:22px 0 30px;">One decision per screen.</h1>
+    <div class="row grow" style="gap:54px;position:relative;z-index:2;">
+      <div class="col" style="flex:1;justify-content:center;gap:18px;">
+        <span class="mono o" style="font-size:23px;letter-spacing:.12em;">UX PRINCIPLES</span>
+        <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Mobile-first, fast, confident.</p>
+        <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Proof above the fold — 20g / 0g / clear.</p>
+        <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Taste-led imagery does the selling.</p>
+        <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; Checkout in three steps or fewer.</p>
+        <p class="body"><span class="o" style="font-weight:800;">+</span>&nbsp; One clear action per section — no clutter.</p>
+      </div>
+      <div class="col" style="flex:1;background:var(--bone-2);border-radius:12px;padding:30px;gap:10px;">
+        <span class="mono muted" style="font-size:21px;letter-spacing:.12em;margin-bottom:6px;">LANDING — TOP TO BOTTOM</span>
+        <div class="col" style="background:var(--charcoal);color:var(--bone);border-radius:6px;padding:18px 22px;"><span style="font-family:'Archivo Expanded';font-weight:800;font-size:26px;">Hero — Clear in motion + one line</span></div>
+        <div class="row" style="background:var(--orange);color:var(--bone);border-radius:6px;padding:14px 22px;justify-content:space-between;"><span class="mono" style="font-size:21px;">20g</span><span class="mono" style="font-size:21px;">0g</span><span class="mono" style="font-size:21px;">STEVIA</span><span class="mono" style="font-size:21px;">CLEAR</span></div>
+        <div class="row" style="background:var(--bone);border:1.5px solid var(--line);border-radius:6px;padding:14px 22px;"><span class="body" style="font-weight:600;">Why Clear — vs milky shakes</span></div>
+        <div class="row" style="background:var(--bone);border:1.5px solid var(--line);border-radius:6px;padding:14px 22px;"><span class="body" style="font-weight:600;">The flavors</span></div>
+        <div class="row" style="background:var(--bone);border:1.5px solid var(--line);border-radius:6px;padding:14px 22px;"><span class="body" style="font-weight:600;">Transparency / the lab</span></div>
+        <div class="row" style="background:var(--bone);border:1.5px solid var(--line);border-radius:6px;padding:14px 22px;"><span class="body" style="font-weight:600;">Reviews &amp; community</span></div>
+        <div class="row" style="background:var(--charcoal);color:var(--bone);border-radius:6px;padding:14px 22px;"><span class="body" style="font-weight:700;">Subscribe &amp; save →</span></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>09 · Digital</span></div>
+  </section>
+
+  <!-- 46 · ECOMMERCE & CONVERSION -->
+  <section class="s-bone" data-label="E-commerce & Conversion">
+    <div class="eyebrow"><span>09.2 E-commerce &amp; Conversion</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:22px 0 32px;">Make premium feel easy.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;z-index:2;align-content:center;">
+      <div class="col" style="gap:14px;border-top:2px solid var(--orange);padding-top:22px;"><span class="mono o" style="font-size:23px;">SUBSCRIBE</span><p class="body" style="font-weight:600;line-height:1.3;">Default to subscription — it softens a high ticket into a habit.</p></div>
+      <div class="col" style="gap:14px;border-top:2px solid var(--orange);padding-top:22px;"><span class="mono o" style="font-size:23px;">BUNDLE</span><p class="body" style="font-weight:600;line-height:1.3;">Starter kit: pouch + branded shaker. Multi-flavor packs.</p></div>
+      <div class="col" style="gap:14px;border-top:2px solid var(--orange);padding-top:22px;"><span class="mono o" style="font-size:23px;">DROP</span><p class="body" style="font-weight:600;line-height:1.3;">Launch like the 15/06 teaser — dated drops, real scarcity.</p></div>
+      <div class="col" style="gap:14px;border-top:2px solid var(--orange);padding-top:22px;"><span class="mono o" style="font-size:23px;">GUARANTEE</span><p class="body" style="font-weight:600;line-height:1.3;">“First-sip” promise — refund if it's not the best you've had.</p></div>
+    </div>
+    <p class="body muted" style="margin-top:34px;position:relative;z-index:2;max-width:1260px;">High price earns trust only if the experience matches. Reviews, transparency and a frictionless refill keep affinity high while the margin stays premium.</p>
+    <div class="pageft"><span>dPTM Brand Book</span><span>09 · Digital</span></div>
+  </section>
+
+  <!-- 47 · DIVIDER 10 -->
+  <section class="s-orange grain" data-label="10 Future Growth">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">10</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 10</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:64%;">Future Growth</h1>
+      <p class="lead" style="max-width:860px;">Where dPTM goes after MaracuMango — product, prestige and territory.</p>
+    </div>
+  </section>
+
+  <!-- 48 · GROWTH OPPORTUNITIES -->
+  <section class="s-bone" data-label="Growth Opportunities">
+    <div class="eyebrow"><span>10.1 Growth Opportunities</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:22px 0 34px;">Four roads, one brand.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:24px;position:relative;z-index:2;">
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:36px;gap:14px;"><span class="mono o" style="font-size:23px;letter-spacing:.12em;">PRODUCT</span><p style="font-family:'Archivo Expanded';font-weight:800;font-size:30px;line-height:1.05;">Build the Clear world</p><p class="body muted">Clear Iso · Pre-Workout · Hydration · Collagen. Then creatine and functional (focus, sleep).</p></div>
+      <div class="col" style="background:var(--charcoal);color:var(--bone);border-radius:10px;padding:36px;gap:14px;"><span class="mono o" style="font-size:23px;letter-spacing:.12em;">PREMIUMIZATION</span><p style="font-family:'Archivo Expanded';font-weight:800;font-size:30px;line-height:1.05;">Numbered &amp; limited</p><p class="body" style="opacity:.85;">Dated drops, numbered runs, premium tins, athlete collabs, collectible card decks &amp; merch.</p></div>
+      <div class="col" style="background:var(--charcoal);color:var(--bone);border-radius:10px;padding:36px;gap:14px;"><span class="mono o" style="font-size:23px;letter-spacing:.12em;">MARKETS</span><p style="font-family:'Archivo Expanded';font-weight:800;font-size:30px;line-height:1.05;">Colombia → Perú</p><p class="body" style="opacity:.85;">Lima next, then the Andean region and the US-Latino market. “De Colombia pal mundo.”</p></div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:36px;gap:14px;"><span class="mono o" style="font-size:23px;letter-spacing:.12em;">ECOSYSTEM &amp; COLLABS</span><p style="font-family:'Archivo Expanded';font-weight:800;font-size:30px;line-height:1.05;">Beyond the pouch</p><p class="body muted">Boxes &amp; run clubs, chefs/bartenders (clear-protein cocktails), streetwear, a dPTM club &amp; app.</p></div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>10 · Growth</span></div>
+  </section>
+
+  <!-- 49 · DIVIDER 11 -->
+  <section class="s-orange grain" data-label="11 Creative Concepts">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">11</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 11</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:64%;">Creative Concepts</h1>
+      <p class="lead" style="max-width:980px;">Three directions. Our recommendation: <b>A as the spine, B's restraint to feel premium, C reserved for drops.</b></p>
+    </div>
+  </section>
+
+  <!-- 50 · CONCEPT A — EVOLUTIONARY -->
+  <section class="s-bone" data-label="Concept A — Evolutionary">
+    <div class="eyebrow"><span>11 · Concept A</span><span class="ln"></span><span>Recommended spine</span></div>
+    <h1 class="title" style="margin:20px 0 30px;">Evolutionary — refine the instinct.</h1>
+    <div class="row grow" style="gap:54px;position:relative;z-index:2;align-items:center;">
+      <div style="flex:0 0 470px;height:470px;background:var(--bone-2);position:relative;border-radius:8px;overflow:hidden;">
+        <div style="position:absolute;inset:26px;border:2px solid var(--ink);"></div>
+        <span class="mono" style="position:absolute;left:11px;top:50%;transform:translateY(-50%) rotate(180deg);writing-mode:vertical-rl;font-size:16px;">dPTM</span>
+        <span class="mono" style="position:absolute;right:11px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font-size:16px;">#RompeLoQueConoces</span>
+        <div class="col" style="position:absolute;inset:26px;justify-content:center;padding:44px;">
+          <span class="mono muted" style="font-size:21px;">driven by</span>
+          <span style="font-family:'Archivo Expanded';font-weight:900;font-size:74px;line-height:.95;">PERFOR-<br/>MANCE<span class="o">.</span></span>
+          <span class="body" style="font-weight:700;border-top:2px solid var(--ink);margin-top:14px;padding-top:12px;">La calidad no se negocia.</span>
+        </div>
+      </div>
+      <div class="col" style="flex:1;gap:0;">
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">VISUAL</span><span class="body" style="flex:1;">Keep the keyline frame &amp; bold type; tighten the grid.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">COLOR</span><span class="body" style="flex:1;">Bone base; orange demoted to a sharp accent.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">TYPE</span><span class="body" style="flex:1;">Archivo Expanded headlines, Space Mono labels.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">PACKAGING</span><span class="body" style="flex:1;">Current CLEAR system, cleanly re-typeset.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;"><span class="mono o" style="width:150px;font-size:22px;">SOCIAL</span><span class="body" style="flex:1;">The five formats, with more whitespace.</span></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>11 · Concepts</span></div>
+  </section>
+
+  <!-- 51 · CONCEPT B — PREMIUM -->
+  <section class="s-bone" data-label="Concept B — Premium">
+    <div class="eyebrow"><span>11 · Concept B</span><span class="ln"></span><span>Restraint &amp; prestige</span></div>
+    <h1 class="title" style="margin:20px 0 30px;">Premium — quiet luxury.</h1>
+    <div class="row grow" style="gap:54px;position:relative;z-index:2;align-items:center;">
+      <div class="col" style="flex:0 0 470px;height:470px;background:var(--charcoal);color:var(--bone);border-radius:8px;padding:44px;justify-content:space-between;">
+        <div class="row" style="justify-content:space-between;"><span class="mono" style="font-size:18px;opacity:.6;">dPTM NUTRITION</span><span class="mono" style="font-size:18px;opacity:.6;">CLEAR · 01</span></div>
+        <div class="col" style="align-items:flex-start;gap:8px;"><span style="font-family:'Archivo';font-weight:500;font-size:96px;line-height:.9;letter-spacing:-.01em;">CLEAR</span><span class="mono o" style="font-size:22px;letter-spacing:.2em;">MARACUMANGO</span></div>
+        <div class="row" style="gap:24px;border-top:1px solid rgba(243,238,227,.25);padding-top:18px;"><span class="mono" style="font-size:19px;opacity:.7;">20G</span><span class="mono" style="font-size:19px;opacity:.7;">0G AZÚCAR</span><span class="mono" style="font-size:19px;opacity:.7;">STEVIA</span></div>
+      </div>
+      <div class="col" style="flex:1;gap:0;">
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">VISUAL</span><span class="body" style="flex:1;">Charcoal &amp; bone, huge negative space, hairline rules.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">COLOR</span><span class="body" style="flex:1;">Mostly neutral; orange as a single spark.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">TYPE</span><span class="body" style="flex:1;">Lighter Archivo, generous tracking, mono captions.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">PACKAGING</span><span class="body" style="flex:1;">Matte, debossed wordmark, fruit as a single line.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;"><span class="mono o" style="width:150px;font-size:22px;">SOCIAL</span><span class="body" style="flex:1;">Slow, editorial — fewer but richer posts.</span></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>11 · Concepts</span></div>
+  </section>
+
+  <!-- 52 · CONCEPT C — DISRUPTIVE -->
+  <section class="s-bone" data-label="Concept C — Disruptive">
+    <div class="eyebrow"><span>11 · Concept C</span><span class="ln"></span><span>Reserve for drops</span></div>
+    <h1 class="title" style="margin:20px 0 30px;">Disruptive — all-in attitude.</h1>
+    <div class="row grow" style="gap:54px;position:relative;z-index:2;align-items:center;">
+      <div style="flex:0 0 470px;height:470px;border-radius:8px;overflow:hidden;"><img src="assets/img-40.jpg" style="width:100%;height:100%;object-fit:cover;" /></div>
+      <div class="col" style="flex:1;gap:0;">
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">VISUAL</span><span class="body" style="flex:1;">Lean all-in on the card &amp; poster world; risograph texture.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">COLOR</span><span class="body" style="flex:1;">Orange + black + bone, high contrast, unapologetic.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">TYPE</span><span class="body" style="flex:1;">Oversized, expressive, rule-breaking layouts.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;border-bottom:1.5px solid var(--line);"><span class="mono o" style="width:150px;font-size:22px;">PACKAGING</span><span class="body" style="flex:1;">Collectible editions — card-deck art, numbered drops.</span></div>
+        <div class="row" style="gap:24px;padding:13px 0;"><span class="mono o" style="width:150px;font-size:22px;">SOCIAL</span><span class="body" style="flex:1;">Saga-driven, meme-fluent, community-first.</span></div>
+      </div>
+    </div>
+    <div class="pageft"><span>dPTM Brand Book</span><span>11 · Concepts</span></div>
+  </section>
+
+  <!-- 53 · DIVIDER 12 -->
+  <section class="s-orange grain" data-label="12 Critical Assessment">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div style="position:absolute;right:60px;top:50%;transform:translateY(-50%);font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:560px;line-height:.8;color:rgba(243,238,227,.16);z-index:1;">12</div>
+    <div class="col" style="margin:auto 0;position:relative;z-index:2;gap:30px;align-items:flex-start;">
+      <div class="eyebrow"><span>Section 12</span><span class="ln"></span></div>
+      <h1 class="hero" style="font-size:108px;line-height:1.0;max-width:64%;">Critical Assessment</h1>
+      <p class="lead" style="max-width:860px;">An honest read on the current work — what stays, what sharpens, what goes.</p>
+    </div>
+  </section>
+
+  <!-- 54 · RETAIN / REFINE / ELIMINATE / REDESIGN -->
+  <section class="s-bone" data-label="Retain / Refine / Eliminate / Redesign">
+    <div class="eyebrow"><span>12.1 The Verdict</span><span class="ln"></span></div>
+    <h1 class="title" style="margin:20px 0 32px;">Keep the fire. Fix the edges.</h1>
+    <div class="grow" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;z-index:2;">
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:32px 28px;gap:16px;">
+        <span class="mono o" style="font-size:23px;letter-spacing:.1em;">RETAIN</span>
+        <p class="small" style="line-height:1.5;">The name &amp; double meaning · the orange · bold grotesque type · the keyline frame · the illustrated saga · the Clear product · the voice.</p>
+      </div>
+      <div class="col" style="background:var(--bone-2);border-radius:10px;padding:32px 28px;gap:16px;">
+        <span class="mono o" style="font-size:23px;letter-spacing:.1em;">REFINE</span>
+        <p class="small" style="line-height:1.5;">Demote orange to accent · standardize the logo lockup &amp; clear space · balance the aggressive body shots · commit to one grid.</p>
+      </div>
+      <div class="col" style="background:var(--charcoal);color:var(--bone);border-radius:10px;padding:32px 28px;gap:16px;">
+        <span class="mono o" style="font-size:23px;letter-spacing:.1em;">ELIMINATE</span>
+        <p class="small" style="line-height:1.5;opacity:.9;">Full-orange floods on every asset · oversaturation · clutter · profanity that's crude without a payoff.</p>
+      </div>
+      <div class="col" style="background:var(--charcoal);color:var(--bone);border-radius:10px;padding:32px 28px;gap:16px;">
+        <span class="mono o" style="font-size:23px;letter-spacing:.1em;">REDESIGN</span>
+        <p class="small" style="line-height:1.5;opacity:.9;">Re-build the packaging label artwork (garbled copy) · draw a proper icon set · publish a formal logo spec.</p>
+      </div>
+    </div>
+    <p class="body muted" style="margin-top:30px;position:relative;z-index:2;max-width:1300px;">The instinct is genuinely strong. None of this is a rescue — it's a tune-up that turns a loud, lovable brand into a <b style="color:var(--ink);">premium one that still sounds like itself.</b></p>
+    <div class="pageft"><span>dPTM Brand Book</span><span>12 · Assessment</span></div>
+  </section>
+
+  <!-- 55 · CLOSE -->
+  <section class="s-char grain" data-label="Close">
+    <div class="kf"></div>
+    <span class="kf-l">dPTM&nbsp;NUTRITION</span>
+    <span class="kf-r">#RompeLoQueConoces</span>
+    <div class="col grow" style="justify-content:center;position:relative;z-index:2;align-items:flex-start;">
+      <div class="eyebrow" style="margin-bottom:34px;"><span>De Colombia pal mundo</span></div>
+      <div style="font-family:'Archivo Expanded','Archivo',sans-serif;font-weight:900;font-size:104px;line-height:1.02;letter-spacing:-.02em;margin-bottom:40px;">
+        <div>Colombia hoy.</div>
+        <div><span class="o">Perú</span> que viene.</div>
+      </div>
+      <p class="lead muted" style="max-width:1020px;">Same formula, same fire, same wink — now built to travel. The brand is ready; this book keeps it honest along the way.</p>
+    </div>
+    <div style="position:absolute;left:106px;right:106px;bottom:62px;display:flex;justify-content:space-between;align-items:flex-end;z-index:2;">
+      <img src="assets/logo-light.png" alt="dPTM" style="height:62px;width:auto;" />
+      <p class="mono small" style="letter-spacing:.14em;opacity:.7;">PRÓXIMO DESTINO: LIMA →</p>
+    </div>
+  </section>
+
+</deck-stage>
+<div id="tweaks-root"></div>
+<script src="deck-stage.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks-app.jsx"></script>
+</body>
+</html>
